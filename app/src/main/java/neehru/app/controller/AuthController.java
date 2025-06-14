@@ -41,8 +41,13 @@ public class AuthController {
             model.addAttribute("errorMessage", e.getMessage());
             return "signup";
         }
+
+        Authentication authentication = SecurityContextHolder.getContext()
+                .getAuthentication();
+
         model.addAttribute("successMessage",
-                "User created successfully, please login");
+                "Welcome to meso! Log in to access your account.");
+
         return "login";
     }
 
