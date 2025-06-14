@@ -1,0 +1,46 @@
+:root{
+    --dark-blue: #5C80BC;
+    --light-blue: #c9d6ea;
+}
+
+header{
+    background-color: var(--dark-blue);
+
+    .navbar{
+        background-color: var(--light-blue);
+        margin: auto;
+        width: 95vw;
+    }
+}
+
+body{
+    background-color: var(--dark-blue);
+}
+
+.main-rows{
+    margin: auto;
+    width: 95vw;
+    display: flex;
+    gap: 1.5vw;
+    justify-content: space-between;
+}
+
+.light-column {
+    background-color: var(--light-blue);
+}
+
+.dark-column {
+    background-color: red;
+}
+
+.profile-col{
+    width: 32vw;
+}
+
+.posts-col{
+    width: 70vw;
+}
+
+.story-col{
+    width: 10vw;
+}

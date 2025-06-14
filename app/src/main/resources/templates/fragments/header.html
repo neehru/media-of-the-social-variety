@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/custom.css"/>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg mt-2 rounded-pill">
+        <div class="collapse navbar-collapse navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/dashboard" th:href="@{dashboard}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/search" th:href="@{search}">Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/post" th:href="@{post}">Post</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+</body>

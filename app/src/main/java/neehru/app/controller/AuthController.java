@@ -2,7 +2,7 @@ package neehru.app.controller;
 
 import jakarta.validation.Valid;
 import neehru.app.model.User;
-import neehru.app.service.UserService;
+import neehru.app.service.UserServiceImpl;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Optional;
+
 @Controller
 public class AuthController {
-    private final UserService userService;
+    private final UserServiceImpl userService;
 
-    public AuthController(UserService userService) {
+    public AuthController(UserServiceImpl userService) {
         this.userService = userService;
     }
 
@@ -58,7 +60,10 @@ public class AuthController {
         if (authentication == null){
             return "login";
         }
-        model.addAttribute("username", authentication.getName());
+        Optional<User> user = userService.getUserByUsername(authentication.getName());
+        if (user.isPresent()){
+            model.addAttribute("user", user.get());
+        }
         return "dashboard";
     }
 }
