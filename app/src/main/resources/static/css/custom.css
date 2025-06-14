@@ -1,6 +1,9 @@
 :root{
     --dark-blue: #5C80BC;
     --light-blue: #c9d6ea;
+    --custom-yellow: #e8c547;
+    --light-grey: #4d5061;
+    --dark-grey: #30323d;
 }
 
 header{
@@ -10,11 +13,27 @@ header{
         background-color: var(--light-blue);
         margin: auto;
         width: 95vw;
+        height: 7vh;
+        padding-top: 2vh;
+    }
+
+    .meso{
+        color: var(--custom-yellow);
+    }
+
+    a{
+        color: var(--light-grey);
+        margin:auto;
+    }
+
+    a:hover{
+        color: var(--dark-grey);
     }
 }
 
 body{
     background-color: var(--dark-blue);
+    font-family: 'Londrina Solid', monospace;
 }
 
 .main-rows{
@@ -27,6 +46,10 @@ body{
 
 .light-column {
     background-color: var(--light-blue);
+}
+
+.rounded-xl{
+    border-radius: .5rem;
 }
 
 .dark-column {

@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/custom.css" />
+    <link href='https://fonts.googleapis.com/css?family=Londrina Solid' rel='stylesheet'>
 </head>
 <body>
 <div th:replace="~{fragments/header :: header}"></div>
 <div class="main-rows mt-3">
-    <div class="profile-col light-column rounded-lg">
+    <div class="profile-col light-column rounded-xl">
         <h1 class="text-center">Profile pic here</h1>
         <p class="text-center" th:text="${user.name}"></p>
         <p class="text-center">@<span th:text="${user.username}"></span></p>
@@ -22,12 +23,12 @@
         <p class="text-center">Create story</p>
 
     </div>
-    <div class="posts-col dark-column rounded-lg">
+    <div class="posts-col dark-column rounded-xl">
         Posts will appear here
         2 different columns
     </div>
-    <div class="story-col light-column rounded-lg">
-        column THREE
+    <div class="story-col light-column rounded-xl">
+        Stories
         <form th:action="@{/logout}" method="post" class="text-center mt-4">
             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
             <button type="submit" class="btn btn-danger">Logout</button>
