@@ -3,7 +3,11 @@ package neehru.app.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+
+import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name = "users")
@@ -13,21 +17,32 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Name is required")
+    private String name;
+
     @NotBlank(message = "Username is required")
     private String username;
+
+    @NotNull(message = "Date of birth is required")
+    private LocalDate birthday;
 
     @NotBlank(message = "Password is required")
     @Size(min = 6, message = "Password must be at least 6 letters long")
     private String password;
 
+    private Boolean visible = true;
+
     // constructors
 
     public User(){}
 
-    public User(String username, String password){
+    public User(String username, String name, LocalDate  birthday, String password, Boolean visible){
         this.id = id;
         this.username = username;
+        this.name= name;
+        this.birthday = birthday;
         this.password = password;
+        this.visible = visible;
     }
 
     // getters and setters
@@ -40,6 +55,14 @@ public class User {
         this.id = id;
     }
 
+    public String getName(){
+        return this.name;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
     public String getUsername(){
         return this.username;
     }
@@ -48,12 +71,28 @@ public class User {
         this.username = username;
     }
 
+    public LocalDate getBirthday(){
+        return this.birthday;
+    }
+
+    public void setBirthday(LocalDate birthday){
+        this.birthday = birthday;
+    }
+
     public String getPassword(){
         return this.password;
     }
 
     public void setPassword (String password) {
         this.password = password;
+    }
+
+    public Boolean getVisible(){
+        return this.visible;
+    }
+
+    public void setVisible(Boolean visible){
+        this.visible = visible;
     }
 
 }
