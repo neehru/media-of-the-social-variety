@@ -1,7 +1,6 @@
 package neehru.app.service;
 
 import neehru.app.model.User;
-import neehru.app.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

@@ -13,7 +13,7 @@
         <div class="collapse navbar-collapse navbarSupportedContent">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                    <h1><a class="nav-link" href="/dashboard" th:href="@{dashboard}">Home</a></h1>
+                    <h1><a class="nav-link" th:href="@{'/me/' + ${currentUser.username}}">Profile</a></h1>
                 </li>
                 <li class="nav-item">
                     <h1><a class="nav-link" href="/search" th:href="@{search}">Search</a></h1>

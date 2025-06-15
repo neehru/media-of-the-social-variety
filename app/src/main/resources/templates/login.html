@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="/css/custom.css" />
     <link href='https://fonts.googleapis.com/css?family=Londrina Solid' rel='stylesheet'>
 </head>
-<body>
-<div class="container mt-5">
+<body class="d-flex flex-column min-vh-100">
+<div class="container mt-5 flex-grow-1">
     <h2 class="text-center">Login</h2>
 
     <div th:if="${successMessage}" class="alert alert-success text-center"
@@ -31,6 +31,6 @@
         <div th:if="${param.error}" class="alert alert-danger" role="alert" th:text="${param.error}"></div>
     </form>
 </div>
-
+<div th:replace="~{fragments/footer :: footer}"></div>
 </body>
 </html>
