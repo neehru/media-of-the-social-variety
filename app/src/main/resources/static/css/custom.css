@@ -70,5 +70,12 @@ body{
 
 footer{
     background-color: var(--dark-grey);
-    color: var(--light-blue);
+
+    a{
+        color: var(--light-blue)
+    }
+
+    a:hover{
+        color: var(--dark-blue)
+    }
 }

@@ -9,17 +9,17 @@
 <body>
 <header>
     <nav class="navbar navbar-expand-lg mt-2 rounded-pill">
-        <h1 class="meso">MESO</h1>
+        <h1><a class="meso" th:href="@{/dashboard}">MESO</a></h1>
         <div class="collapse navbar-collapse navbarSupportedContent">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
                     <h1><a class="nav-link" th:href="@{'/me/' + ${currentUser.username}}">Profile</a></h1>
                 </li>
                 <li class="nav-item">
-                    <h1><a class="nav-link" href="/search" th:href="@{search}">Search</a></h1>
+                    <h1><a class="nav-link" th:href="@{search}">Search</a></h1>
                 </li>
                 <li class="nav-item">
-                    <h1><a class="nav-link" href="/post" th:href="@{post}">Post</a></h1>
+                    <h1><a class="nav-link" th:href="@{post}">Post</a></h1>
                 </li>
             </ul>
         </div>
