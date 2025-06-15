@@ -67,3 +67,8 @@ body{
 .story-col{
     width: 10vw;
 }
+
+footer{
+    background-color: var(--dark-grey);
+    color: var(--light-blue);
+}

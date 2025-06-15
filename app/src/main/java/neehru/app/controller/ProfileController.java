@@ -4,30 +4,30 @@ import neehru.app.model.User;
 import neehru.app.service.UserServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@RestController
-@RequestMapping("/users")
-public class UserController {
+@Controller
+@RequestMapping("/me/")
+public class ProfileController {
     private final UserServiceImpl userService;
 
-    public UserController(UserServiceImpl userService) {
+    public ProfileController(UserServiceImpl userService) {
         this.userService = userService;
     }
 
-    @GetMapping
-    public List<User> getAllUsers(){
-        return userService.getAllUsers();
-    }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Long id){
-        Optional<User> user = userService.getUserById(id);
-        return user.map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    @GetMapping("/{username}")
+    public String profile(@PathVariable String username, Model model){
+        Optional<User> user = userService.getUserByUsername(username);
+        if (user.isPresent()) {
+            model.addAttribute("user", user.get());
+        }
+        return "profile";
     }
 
     @PostMapping
