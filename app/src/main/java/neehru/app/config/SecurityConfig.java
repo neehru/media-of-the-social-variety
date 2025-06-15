@@ -33,7 +33,7 @@ public class SecurityConfig {
                 .formLogin((form) -> form
                         .loginProcessingUrl("/login")
                         .loginPage("/login")
-                        .defaultSuccessUrl("/dashboard")
+                        .defaultSuccessUrl("/dashboard", true)
                         .failureHandler(authenticationFailureHandler())
                         .permitAll()
                 )
