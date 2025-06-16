@@ -9,6 +9,7 @@ import java.util.Optional;
 public interface PostService {
     public List<Post> getAllPosts();
     public Optional<Post> getPostById(Long id);
+    public Optional<Post> getPostByImage(String uuid);
 //    public Post savePost(Post post);
 //    public Post updatePost(Long id, Post updatedPost);
     public void deletePost(Long id);

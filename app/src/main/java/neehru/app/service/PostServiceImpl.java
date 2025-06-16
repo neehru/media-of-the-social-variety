@@ -26,6 +26,10 @@ public class PostServiceImpl implements PostService {
         return postRepository.findById(id);
     }
 
+    public Optional<Post> getPostByImage(String uuid){
+        return postRepository.findByImage(uuid);
+    }
+
 //    public Post savePost(Post post){
 //    public Post updatePost(Long id, Post updatedPost){
 
