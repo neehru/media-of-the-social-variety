@@ -31,17 +31,29 @@ header{
     }
 }
 
+.btn-primary{
+    border-radius: 50rem;
+    color: var(--dark-grey);
+    background-color: var(--custom-yellow);
+    border: 0;
+}
+
 body{
     background-color: var(--dark-blue);
     font-family: 'Londrina Solid', monospace;
 }
 
-.main-rows{
+.main-rows, .main-rows-profile{
     margin: auto;
+    flex-direction: row;
     width: 95vw;
     display: flex;
     gap: 1.5vw;
     justify-content: space-between;
+}
+
+.main-rows-profile{
+    max-height: 80vh;
 }
 
 .light-column {
@@ -66,6 +78,34 @@ body{
 
 .story-col{
     width: 10vw;
+}
+
+.image-col{
+    width: 40vw;
+}
+
+.desc-col{
+    width: 53.5vw;
+}
+
+form.new-post-form{
+    display: flex;
+    gap: 1.5vw;
+}
+
+.post-desc{
+    background-color: orange;
+}
+
+#image-to-post{
+    width: 70vh;
+    height: 70vh;
+    display: block;
+    margin: auto;
+}
+
+input[type="file"] {
+    display: none;
 }
 
 footer{
