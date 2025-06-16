@@ -9,13 +9,13 @@
 </head>
 <body class="d-flex flex-column min-vh-100">
 <div th:replace="~{fragments/header :: header}"></div>
-<div th:if="${errorMessage}" class="alert alert-danger mt-3" role="alert">
-    <p th:text="${errorMessage}"></p>
-</div>
 <div class="main-rows-profile mt-3 flex-grow-1">
     <form th:action="@{/post/new}" th:object="${post}" method="post" enctype="multipart/form-data" class="new-post-form">
         <div class="image-col light-column rounded-xl">
             <div class="form-group">
+                <div th:if="${errorMessage}" class="alert alert-danger mt-3" role="alert">
+                    <p th:text="${errorMessage}"></p>
+                </div>
                 <img id="image-to-post" class="mt-2"/>
 
                 <div class="d-flex justify-content-center">
@@ -31,7 +31,7 @@
         <div class="desc-col dark-column rounded-xl">
             <div class="form-group post-desc pb-5">
                 <label for="description">Description</label>
-                <input type="text" id="description" th:field="*{description}" class="form-control" required/>
+                <input type="text" id="description" th:field="*{description}" class="form-control"/>
                 <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="text-danger"></div>
             </div>
 

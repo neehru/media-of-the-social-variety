@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -83,6 +84,19 @@ public class PostController {
         }
 
         return "new_post";
+    }
+
+    @GetMapping("/{uuid}")
+    public String viewPost(@PathVariable String uuid, Model model) {
+
+        Optional<Post> post = postRepository.findByImage(uuid);
+
+        if (post.isPresent()) {
+
+            model.addAttribute("imagePath", uuid);
+                return "view_post";
+        }
+        return "redirect:/dashboard";
     }
 
 }
