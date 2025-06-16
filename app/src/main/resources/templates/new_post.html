@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>New Post</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/custom.css" />
+    <link href='https://fonts.googleapis.com/css?family=Londrina Solid' rel='stylesheet'>
+</head>
+<body class="d-flex flex-column min-vh-100">
+<div th:replace="~{fragments/header :: header}"></div>
+<div th:if="${errorMessage}" class="alert alert-danger mt-3" role="alert">
+    <p th:text="${errorMessage}"></p>
+</div>
+<div class="main-rows-profile mt-3 flex-grow-1">
+    <form th:action="@{/post/new}" th:object="${post}" method="post" enctype="multipart/form-data" class="new-post-form">
+        <div class="image-col light-column rounded-xl">
+            <div class="form-group">
+                <img id="image-to-post" class="mt-2"/>
+
+                <div class="d-flex justify-content-center">
+                    <label for="image" class="file-upload btn btn-primary mt-2">Upload Photo</label>
+                </div>
+                <input type="file" accept="image/*" onchange="loadFile(event)" id="image" th:field="*{image}" class="form-control" required/>
+
+                <div th:if="${#fields.hasErrors('image')}" th:errors="*{image}" class="text-danger"></div>
+
+
+            </div>
+        </div>
+        <div class="desc-col dark-column rounded-xl">
+            <div class="form-group post-desc pb-5">
+                <label for="description">Description</label>
+                <input type="text" id="description" th:field="*{description}" class="form-control" required/>
+                <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="text-danger"></div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Post</button>
+        </div>
+    </form>
+
+</div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+<script src="/js/scripts.js"></script>
+</body>
+</html>
