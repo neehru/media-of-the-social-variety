@@ -10,7 +10,16 @@
 <body class="d-flex flex-column min-vh-100">
 <div th:replace="~{fragments/header :: header}"></div>
 <div class="view-post light-column rounded-xl mt-3 flex-grow-1">
-<!--    <img th:src="@{/uploads/posts/{uuid}.jpg( uuid=${imagePath} )}" alt="Post Image" class="post-image" />-->
+    <img th:src="@{/uploads/posts/{uuid}.jpg( uuid=${imagePath} )}" alt="Post Image" class="post-image" />
+
+    <div class="post-comments rounded-xl flex-grow-1">
+<!--        <div class="username-and-date"></div>-->
+        <p><a th:href="@{'/me/' + ${user.username}}" th:text="'@' + ${user.username}"></a></p>
+        <p th:text="${post.datePosted}">
+        <p th:text="${post.description}">
+        <hr>
+        <p>There are no comments</p>
+    </div>
 </div>
 <div th:replace="~{fragments/footer :: footer}"></div>
 </body>

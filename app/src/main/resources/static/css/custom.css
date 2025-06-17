@@ -112,15 +112,33 @@ input[type="file"] {
 }
 
 .post-image{
-    width: 100%;
+    width: 50%;
     height: 100%;
+
+    border-bottom-left-radius: .5rem;
+    border-top-left-radius: .5rem;
 }
 
 .view-post{
-    width: 100vh;
     height: 70vh;
-    display: block;
+    aspect-ratio: 2 / 1;
+    display: flex;
     margin: auto;
+}
+
+/*hr{*/
+/*    border: 4px var(--dark-grey);*/
+/*    !*width: 80%;*!*/
+/*    !*margin: auto;*!*/
+
+/*}*/
+
+.post-comments{
+    width: 50%;
+    height: 100%;
+    margin-left: auto;
+    right: 0;
+    background-color: red;
 }
 
 footer{
