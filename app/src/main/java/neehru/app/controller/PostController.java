@@ -3,6 +3,7 @@ package neehru.app.controller;
 import neehru.app.model.Post;
 import neehru.app.model.User;
 import neehru.app.repository.PostRepository;
+import neehru.app.service.PostServiceImpl;
 import neehru.app.service.UserServiceImpl;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,11 +25,11 @@ import java.util.UUID;
 @RequestMapping("/post")
 public class PostController {
     private final UserServiceImpl userService;
-    private final PostRepository postRepository;
+    private final PostServiceImpl postService;
 
-    public PostController(UserServiceImpl userService, PostRepository postRepository) {
+    public PostController(UserServiceImpl userService, PostServiceImpl postService) {
         this.userService = userService;
-        this.postRepository = postRepository;
+        this.postService = postService;
     }
 
     @GetMapping("/new")
@@ -70,7 +71,7 @@ public class PostController {
                     newPost.setImage(uuid);
                     newPost.setDatePosted(LocalDate.now());
 
-                    postRepository.save(newPost);
+                    postService.savePost(newPost);
 
                     return "redirect:/dashboard";
                 } else {
@@ -89,12 +90,20 @@ public class PostController {
     @GetMapping("/{uuid}")
     public String viewPost(@PathVariable String uuid, Model model) {
 
-        Optional<Post> post = postRepository.findByImage(uuid);
+        Optional<Post> post = postService.getPostByImage(uuid);
 
         if (post.isPresent()) {
 
-            model.addAttribute("imagePath", uuid);
+            Optional<User> user = userService.getUserById(post.get().getUser().getId());
+
+            if (user.isPresent()) {
+                model.addAttribute("imagePath", uuid);
+                model.addAttribute("post", post.get());
+                model.addAttribute("user", user.get());
+
                 return "view_post";
+            }
+
         }
         return "redirect:/dashboard";
     }

@@ -30,7 +30,9 @@ public class PostServiceImpl implements PostService {
         return postRepository.findByImage(uuid);
     }
 
-//    public Post savePost(Post post){
+    public Post savePost(Post post) {
+        return postRepository.save(post);
+    }
 //    public Post updatePost(Long id, Post updatedPost){
 
     public void deletePost(Long id){
