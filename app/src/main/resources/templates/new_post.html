@@ -21,7 +21,7 @@
                 <div class="d-flex justify-content-center">
                     <label for="image" class="file-upload btn btn-primary mt-2">Upload Photo</label>
                 </div>
-                <input type="file" accept="image/*" onchange="loadFile(event)" id="image" th:field="*{image}" class="form-control" required/>
+                <input type="file" accept="image/*" onchange="loadFile(event)" id="image" th:field="*{image}" class="form-control pb-0" required/>
 
                 <div th:if="${#fields.hasErrors('image')}" th:errors="*{image}" class="text-danger"></div>
 
