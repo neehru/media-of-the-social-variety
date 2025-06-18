@@ -7,3 +7,12 @@ let loadFile = function(event) {
     URL.revokeObjectURL(output.src) // free memory
     }
 };
+
+function showPassword() {
+    let x = document.getElementById("password");
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+}

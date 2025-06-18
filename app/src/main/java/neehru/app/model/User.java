@@ -32,19 +32,22 @@ public class User {
 
     private Boolean visible = true;
 
+    private String profilePicture;
+
     private String bio;
 
     // constructors
 
     public User(){}
 
-    public User(String username, String name, LocalDate  birthday, String password, Boolean visible, String bio){
+    public User(String username, String name, LocalDate  birthday, String password, Boolean visible, String profilePicture, String bio){
         this.id = id;
         this.username = username;
         this.name= name;
         this.birthday = birthday;
         this.password = password;
         this.visible = visible;
+        this.profilePicture = profilePicture;
         this.bio = bio;
     }
 
@@ -96,6 +99,14 @@ public class User {
 
     public void setVisible(Boolean visible){
         this.visible = visible;
+    }
+
+    public String getProfilePicture(){
+        return this.profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture){
+        this.profilePicture = profilePicture;
     }
 
     public String getBio(){
