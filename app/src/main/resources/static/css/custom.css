@@ -56,6 +56,41 @@ body{
     height: 70vh;
 }
 
+.profile-area{
+    display: flex;
+    width: 95vw;
+    height: 20vh;
+}
+
+.temp-pfp{
+    background-color: red;
+    width: 15vh;
+    height: 15vh;
+    display: inline-block;
+}
+
+.profile-area-1{
+    background-color: orange;
+}
+
+.profile-area-2{
+    background-color: green;
+}
+
+.profile-area-3{
+    margin-left: auto;
+    width: 30vw;
+    background-color: deeppink;
+    display: inline-block;
+    height: 100%;
+}
+
+.profile-area-1, .profile-area-2, .profile-area-3 {
+    display: inline-block;
+    height: 100%;
+}
+
+
 .light-column {
     background-color: var(--light-blue);
 }

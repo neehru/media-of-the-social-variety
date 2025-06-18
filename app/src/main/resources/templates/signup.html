@@ -35,6 +35,8 @@
         <div class="form-group">
             <label for="password">Password:</label>
             <input type="password" id="password" th:field="*{password}" class="form-control" required/>
+
+            <input type="checkbox" onclick="showPassword()">Show Password
             <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger"></div>
         </div>
 
@@ -47,5 +49,6 @@
     </div>
 </div>
 <div th:replace="~{fragments/footer :: footer}"></div>
+<script src="/js/scripts.js"></script>
 </body>
 </html>
