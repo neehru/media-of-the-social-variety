@@ -1,6 +1,7 @@
 package neehru.app.controller;
 
 import neehru.app.model.User;
+import neehru.app.service.PostServiceImpl;
 import neehru.app.service.UserServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +16,11 @@ import java.util.Optional;
 @RequestMapping("/me/")
 public class ProfileController {
     private final UserServiceImpl userService;
+    private final PostServiceImpl postService;
 
-    public ProfileController(UserServiceImpl userService) {
+    public ProfileController(UserServiceImpl userService, PostServiceImpl postService) {
         this.userService = userService;
+        this.postService = postService;
     }
 
 
@@ -26,8 +29,13 @@ public class ProfileController {
         Optional<User> user = userService.getUserByUsername(username);
         if (user.isPresent()) {
             model.addAttribute("user", user.get());
+            model.addAttribute("posts", postService.getAllUsersPosts(user.get()));
+
+            System.out.println("*** SIZE OF POSTS IS " + postService.getAllUsersPosts(user.get()).size());
+
+            return "profile";
         }
-        return "profile";
+        return "redirect:/dashboard";
     }
 
     @PostMapping

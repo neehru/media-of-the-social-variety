@@ -13,5 +13,6 @@ public interface PostService {
     public Post savePost(Post post);
 //    public Post updatePost(Long id, Post updatedPost);
     public void deletePost(Long id);
+    public List<Post> getAllUsersPosts(User user);
 }
 
