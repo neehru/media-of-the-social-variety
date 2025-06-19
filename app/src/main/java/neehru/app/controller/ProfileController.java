@@ -1,5 +1,6 @@
 package neehru.app.controller;
 
+import neehru.app.model.Post;
 import neehru.app.model.User;
 import neehru.app.service.PostServiceImpl;
 import neehru.app.service.UserServiceImpl;
@@ -9,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,7 +32,10 @@ public class ProfileController {
         Optional<User> user = userService.getUserByUsername(username);
         if (user.isPresent()) {
             model.addAttribute("user", user.get());
-            model.addAttribute("posts", postService.getAllUsersPosts(user.get()));
+
+            List<Post> posts = postService.getAllUsersPosts(user.get());
+            Collections.reverse(posts);
+            model.addAttribute("posts", posts);
 
             System.out.println("*** SIZE OF POSTS IS " + postService.getAllUsersPosts(user.get()).size());
 

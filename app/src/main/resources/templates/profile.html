@@ -36,11 +36,15 @@
                 </div>
             </div>
             <div th:unless="${#lists.isEmpty(posts)}">
-                <p>THere ARE POSTS!!!</p>
+                <div th:each="indiv_post, i : ${posts}">
+                    <a th:href="@{/post/{image}(image=${indiv_post.image})}">
+                        <div class="image-in-profile rounded-xl light-column">
+                            <img th:src="@{/uploads/posts/{uuid}.jpg( uuid=${indiv_post.image} )}" alt="Post Image" class="profile-posts" />
+                        </div>
+                    </a>
+                </div>
             </div>
-            <p>SHOWS FOR ALL</p>
-<!--            <div class="light-column rounded-xl width-40vw">-->
-<!--            </div>-->
+
         </div>
     </div>
 <!--    <p th:if="${currentUser.username == user.username}">-->
