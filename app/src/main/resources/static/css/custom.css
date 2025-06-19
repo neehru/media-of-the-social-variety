@@ -154,6 +154,11 @@ input[type="file"] {
     border-top-left-radius: .5rem;
 }
 
+.profile-posts{
+    width: 95%;
+    height: 95%;
+}
+
 .view-post{
     height: 70vh;
     aspect-ratio: 2 / 1;
@@ -161,17 +166,35 @@ input[type="file"] {
     margin: auto;
 }
 
-.user-posts{
-    background-color: red;
-    margin: auto;
-    width: 95vw;
-    min-height: 40vh;
-}
-
 .profile-container {
     display: flex;
     flex-direction: column;
 }
+
+/*.user-posts{*/
+/*    background-color: red;*/
+/*    margin: auto;*/
+/*    width: 95vw;*/
+/*    min-height: 40vh;*/
+/*    display: flex;*/
+
+/*    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));*/
+/*    flex-wrap: wrap;*/
+/*    gap: 10px;*/
+/*    padding: 10px;*/
+/*    justify-content: flex-start;*/
+/*}*/
+
+/*.image-in-profile{*/
+/*    background-color: rgba(0, 0, 255, 0.8);*/
+/*    width: 30vw;*/
+/*    text-align: center;*/
+/*    !*padding: 20px 0;*!*/
+/*    aspect-ratio: 1 / 1;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*}*/
 
 /*hr{*/
 /*    border: 4px var(--dark-grey);*/
@@ -179,6 +202,28 @@ input[type="file"] {
 /*    !*margin: auto;*!*/
 
 /*}*/
+
+.user-posts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5vw;
+    width: 95vw;
+    min-height: 40vh;
+}
+
+.image-in-profile {
+    width: 20vw;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-posts > div {
+     display: contents;
+ }
+
+
 
 .post-comments{
     width: 50%;

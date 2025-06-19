@@ -52,9 +52,9 @@ public class PostController {
         try {
 
             // generating uuid to save as filename
-            String fileExtension = image.getOriginalFilename().substring((image.getOriginalFilename()).lastIndexOf("."));
+//            String fileExtension = image.getOriginalFilename().substring((image.getOriginalFilename()).lastIndexOf("."));
             String uuid = UUID.randomUUID().toString();
-            String fileName = uuid + fileExtension;
+            String fileName = uuid + ".jpg";
 
             Path path = Paths.get("src/main/resources/static/uploads/posts");
             Files.copy(image.getInputStream(), path.resolve(fileName));
