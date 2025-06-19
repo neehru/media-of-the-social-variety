@@ -161,6 +161,18 @@ input[type="file"] {
     margin: auto;
 }
 
+.user-posts{
+    background-color: red;
+    margin: auto;
+    width: 95vw;
+    min-height: 40vh;
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+}
+
 /*hr{*/
 /*    border: 4px var(--dark-grey);*/
 /*    !*width: 80%;*!*/

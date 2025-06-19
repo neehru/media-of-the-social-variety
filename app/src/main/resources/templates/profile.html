@@ -10,18 +10,37 @@
 <body class="d-flex flex-column min-vh-100">
 <div th:replace="~{fragments/header :: header}"></div>
 <div class="main-rows mt-3 flex-grow-1">
-    <div class="profile-area light-column rounded-xl">
-        <div class="profile-area-1 rounded-xl">
-            <div class="temp-pfp rounded-circle mt-2 ml-2 mr-2"></div>
-            <p class="text-center">[Follows you?]</p>
+    <div class="profile-container">
+        <div class="profile-area light-column rounded-xl">
+            <div class="profile-area-1 rounded-xl">
+                <div class="temp-pfp rounded-circle mt-2 ml-2 mr-2"></div>
+                <p class="text-center">[Follows you?]</p>
+            </div>
+            <div class="profile-area-2 rounded-xl">
+                <p th:text="${user.name}"></p>
+                <p th:text="'@' + ${user.username}"></p>
+                <p th:text="${user.bio}"></p>
+            </div>
+            <div class="profile-area-3 rounded-xl">
+                <p>profile!! that belongs to <span th:text="${user.username}"></span></p>
+            </div>
         </div>
-        <div class="profile-area-2 rounded-xl">
-            <p th:text="${user.name}"></p>
-            <p th:text="'@' + ${user.username}"></p>
-            <p th:text="${user.bio}"></p>
-        </div>
-        <div class="profile-area-3 rounded-xl">
-            <p>profile!! that belongs to <span th:text="${user.username}"></span></p>
+        <div class="user-posts rounded-xl mt-3 flex-grow-1">
+            <div th:if="${#lists.isEmpty(posts)}">
+                <div th:if="${currentUser.username} == ${user.username}">
+                    <p>You currently have no posts</p>
+                    <a class="btn btn-primary" th:href="@{/post/new}">Create first post!</a>
+                </div>
+                <div th:unless="${currentUser.username} == ${user.username}">
+                    <p th:text="'@' + ${user.username} + ' has no posts.'"></p>
+                </div>
+            </div>
+            <div th:unless="${#lists.isEmpty(posts)}">
+                <p>THere ARE POSTS!!!</p>
+            </div>
+            <p>SHOWS FOR ALL</p>
+<!--            <div class="light-column rounded-xl width-40vw">-->
+<!--            </div>-->
         </div>
     </div>
 <!--    <p th:if="${currentUser.username == user.username}">-->

@@ -6,6 +6,7 @@ import neehru.app.repository.PostRepository;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,6 +38,19 @@ public class PostServiceImpl implements PostService {
 
     public void deletePost(Long id){
         postRepository.deleteById(id);
+    }
+
+    public List<Post> getAllUsersPosts(User user){
+
+        List<Post> allPosts = getAllPosts();
+        List<Post> userPosts = new ArrayList<>();
+
+        for (Post post : allPosts) {
+            if (post.getUser().equals(user)) {
+                userPosts.add(post);
+            }
+        }
+        return userPosts;
     }
 
 }
