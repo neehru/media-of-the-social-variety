@@ -11,37 +11,19 @@
 <div th:replace="~{fragments/header :: header}"></div>
 <div class="main-rows mt-3 flex-grow-1">
     <div class="profile-col light-column rounded-xl">
-        <h1 class="text-center">Profile pic here</h1>
+        <div class="temp-pfp rounded-circle mt-2 mx-auto d-block"></div>
         <p class="text-center" th:text="${user.name}"></p>
         <p class="text-center">@<span th:text="${user.username}"></span></p>
 
-        <p class="text-center">Posts, followers etc</p>
+        <p class="text-center">0 0 0</p>
+        <p class="text-center">Posts Followers Following</p>
 
 
-        <p class="text-center">View profile</p>
-        <p class="text-center">Create post</p>
-        <p class="text-center">Create story</p>
-
-        <p class="text-center">Create story</p>
-
-        <p class="text-center">Create story</p>
-        <p class="text-center">Create story</p>
-
-        <p class="text-center">Create story</p>
-
-        <p class="text-center">Create story</p>
-
-        <p class="text-center">Create story</p>
-
-        <p class="text-center">Create story</p>
-
-        <p class="text-center">Create story</p>
-        <p class="text-center">Create story</p>
-
-        <p class="text-center">Create story</p>
-
-        <p class="text-center">Create story</p>
-
+        <div class="text-center mx-auto">
+            <a class="btn btn-primary w-95 mb-4" th:href="@{'/me/' + ${currentUser.username}}">View Profile</a>
+            <a class="btn btn-secondary w-95 mb-4" th:href="@{/post/new}">Create Post</a>
+            <a class="btn btn-secondary w-95 mb-4" th:href="@{/story/new}">Create Story</a>
+        </div>
 
 
     </div>

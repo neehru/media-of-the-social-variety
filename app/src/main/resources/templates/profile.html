@@ -23,6 +23,11 @@
             </div>
             <div class="profile-area-3 rounded-xl">
                 <p>profile!! that belongs to <span th:text="${user.username}"></span></p>
+                <span>
+                    <a class="btn btn-secondary" th:href="@{/post/archive}">View Archive</a>
+                    <a class="btn btn-primary" th:href="@{/settings}">Settings</a>
+                </span>
+
             </div>
         </div>
         <div class="user-posts rounded-xl mt-3 flex-grow-1">
