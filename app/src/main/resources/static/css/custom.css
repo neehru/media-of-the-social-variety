@@ -38,6 +38,17 @@ header{
     border: 0;
 }
 
+.btn-secondary{
+    border-radius: 50rem;
+    color: var(--dark-grey);
+    background-color: var(--light-grey);
+    border: 0;
+}
+
+p{
+
+}
+
 body{
     background-color: var(--dark-blue);
     font-family: 'Londrina Solid', monospace;
@@ -169,6 +180,10 @@ input[type="file"] {
 .profile-container {
     display: flex;
     flex-direction: column;
+}
+
+.w-95{
+    width: 95%;
 }
 
 /*.user-posts{*/
