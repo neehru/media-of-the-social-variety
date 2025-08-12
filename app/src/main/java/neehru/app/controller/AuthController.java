@@ -2,6 +2,7 @@ package neehru.app.controller;
 
 import jakarta.validation.Valid;
 import neehru.app.model.User;
+import neehru.app.service.PostServiceImpl;
 import neehru.app.service.UserServiceImpl;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -18,9 +19,11 @@ import java.util.Optional;
 @Controller
 public class AuthController {
     private final UserServiceImpl userService;
+    private final PostServiceImpl postService;
 
-    public AuthController(UserServiceImpl userService) {
+    public AuthController(UserServiceImpl userService, PostServiceImpl postService) {
         this.userService = userService;
+        this.postService = postService;
     }
 
     @GetMapping("/login")
@@ -64,6 +67,7 @@ public class AuthController {
         Optional<User> user = userService.getUserByUsername(authentication.getName());
         if (user.isPresent()){
             model.addAttribute("user", user.get());
+            model.addAttribute("postsNumber", postService.getAllUsersPosts(user.get()).size());
         }
         return "dashboard";
     }

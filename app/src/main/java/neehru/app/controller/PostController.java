@@ -73,7 +73,8 @@ public class PostController {
 
                     postService.savePost(newPost);
 
-                    return "redirect:/dashboard";
+//                    return "redirect:/dashboard";
+                    return "redirect:/post/" + newPost.getImage();
                 } else {
                     model.addAttribute("errorMessage", "User not found.");
                 }

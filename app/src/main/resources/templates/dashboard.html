@@ -15,7 +15,12 @@
         <p class="text-center" th:text="${user.name}"></p>
         <p class="text-center">@<span th:text="${user.username}"></span></p>
 
-        <p class="text-center">0 0 0</p>
+        <span>
+            <p class="text-center" th:text="${postsNumber}"></p>
+            <p class="text-center">0</p>
+            <p class="text-center">0</p>
+        </span>
+<!--        <p class="text-center">0 0 0</p>-->
         <p class="text-center">Posts Followers Following</p>
 
 
