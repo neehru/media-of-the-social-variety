@@ -45,8 +45,16 @@ header{
     border: 0;
 }
 
-p{
+.logo-col, .input-col{
+    height: 92vh;
+}
 
+.form-class {
+    background-color: var(--dark-blue);
+}
+
+.no-footer-gap footer.mt-3 {
+    margin-top: 0 !important;
 }
 
 body{
@@ -250,6 +258,7 @@ input[type="file"] {
 
 footer{
     background-color: var(--dark-grey);
+    height: 8vh;
 
     a{
         color: var(--light-blue)

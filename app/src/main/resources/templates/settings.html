@@ -7,8 +7,11 @@
     <link rel="stylesheet" href="/css/custom.css" />
     <link href='https://fonts.googleapis.com/css?family=Londrina Solid' rel='stylesheet'>
 </head>
-<body>
-
+<body class="d-flex flex-column min-vh-100">
+<div th:replace="~{fragments/header :: header}"></div>
+<div class="view-post light-column rounded-xl mt-3 flex-grow-1">
+    <p>Profile photo here</p>
+</div>
 <div th:replace="~{fragments/footer :: footer}"></div>
 </body>
 </html>
