@@ -49,10 +49,6 @@ header{
     height: 92vh;
 }
 
-.form-class {
-    background-color: var(--dark-blue);
-}
-
 .no-footer-gap footer.mt-3 {
     margin-top: 0 !important;
 }
@@ -148,6 +144,15 @@ body{
 form.new-post-form{
     display: flex;
     gap: 1.5vw;
+}
+
+form{
+
+}
+
+.underlined-link{
+    color: var(--dark-grey);
+
 }
 
 .post-desc{

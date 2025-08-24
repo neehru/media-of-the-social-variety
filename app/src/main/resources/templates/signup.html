@@ -10,43 +10,54 @@
 <body class="d-flex flex-column min-vh-100 no-footer-gap">
 <div class="flex-grow-1">
     <div class="row h-100 no-gutters">
-        <div class="col-12 col-md-4 logo-col light-column d-flex align-items-center justify-content-center">
+        <div class="col-12 col-md-4 logo-col light-column d-flex flex-column align-items-center justify-content-center">
             <img th:src="@{/images/meso_logo_1.PNG}" alt="Logo"/>
-            <p>Already have an account? <u>Login here</u></p>
+            <p>Already have an account? <u><a class="underlined-link" th:href="@{'/login/'}">Login here</a></u></p>
         </div>
         <div class="col-12 col-md-8 input-col align-items-center justify-content-center">
             <h3 class="text-center mt-5">Sign Up</h3>
 
-            <form th:action="@{/signup}" th:object="${user}" method="post" class="border p-4 rounded bg-light">
-                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            <form th:action="@{/signup}" th:object="${user}" method="post" class="pl-5 pr-5 pb-4">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 
                 <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" th:field="*{name}" class="form-control" required/>
+                    <label for="name"></label>
+                    <input type="text" id="name" th:field="*{name}" class="form-control rounded-pill" placeholder="Name" required/>
                     <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></div>
                 </div>
 
                 <div class="form-group">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" th:field="*{username}" class="form-control" required/>
+                    <label for="username"></label>
+                    <input type="text" id="username" th:field="*{username}" class="form-control rounded-pill" placeholder="Username" required/>
                     <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="text-danger"></div>
                 </div>
 
                 <div class="form-group">
-                    <label for="birthday">Date of Birth:</label>
-                    <input type="date" id="birthday" th:field="*{birthday}" class="form-control" required/>
+                    <label for="birthday"></label>
+                    <input type="date" id="birthday" th:field="*{birthday}" class="form-control rounded-pill" placeholder="Date of Birth" required/>
                     <div th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}" class="text-danger"></div>
                 </div>
 
                 <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" th:field="*{password}" class="form-control" required/>
+                    <label for="password"></label>
+                    <input type="password" id="password" th:field="*{password}" class="form-control rounded-pill" placeholder="Password" required/>
 
-                    <input type="checkbox" onclick="showPassword()">Show Password
-                    <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger"></div>
+                        <label for="showPassword"></label>
+                        <input type="checkbox" id="showPassword" onclick="showPassword()">Show Password
+                        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger"></div>
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                <div class="form-group">
+                    <label for="confirmPassword"></label>
+                    <input type="password" id="confirmPassword" th:field="*{confirmPassword}" class="form-control rounded-pill"  placeholder="Confirm Password" required/>
+
+<!--                TODO:    js needs fixing-->
+                    <label for="showConfirmPassword"></label>
+                    <input type="checkbox" id="showConfirmPassword" onclick="showPassword()">Show Password
+                    <div th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{password}" class="text-danger"></div>
+                </div>
+
+                <button type="submit" class="btn btn-primary px-5">Sign Up</button>
             </form>
 
             <!--  error message display  -->

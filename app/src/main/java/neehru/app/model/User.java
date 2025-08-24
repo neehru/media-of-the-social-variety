@@ -30,6 +30,10 @@ public class User {
     @Size(min = 6, message = "Password must be at least 6 letters long")
     private String password;
 
+    @Transient
+    @NotBlank(message = "Password confirmation is required")
+    private String confirmPassword;
+
     private Boolean visible = true;
 
     private String profilePicture;
@@ -91,6 +95,14 @@ public class User {
 
     public void setPassword (String password) {
         this.password = password;
+    }
+
+    public String getConfirmPassword(){
+        return this.confirmPassword;
+    }
+
+    public void setConfirmPassword (String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 
     public Boolean getVisible(){
