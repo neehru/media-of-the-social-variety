@@ -12,10 +12,10 @@
     <div class="row h-100 no-gutters">
         <div class="col-12 col-md-4 logo-col light-column d-flex flex-column align-items-center justify-content-center">
             <img th:src="@{/images/meso_logo_2.PNG}" alt="Logo"/>
-            <p>Dont have an account? <u><a class="underlined-link" th:href="@{/signup}">Signup here</a></u></p>
+            <h4>Don't have an account? <u><a class="underlined-link" th:href="@{/signup}">Signup here</a></u></h4>
         </div>
         <div class="col-12 col-md-8 input-col align-items-center justify-content-center">
-            <h3 class="text-center mt-5">Login</h3>
+            <h2 class="text-center mt-5">Login</h2>
 
             <div th:if="${successMessage}" class="alert alert-success text-center"
                  role="alert" th:text="${successMessage}"></div>
