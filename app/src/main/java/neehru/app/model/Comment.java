@@ -23,7 +23,7 @@ public class Comment {
     @JoinColumn(name = "commenter_id")
     private User commenter;
 
-    @NotBlank(message = "Your comment is empty!")
+//    @NotBlank(message = "Your comment is empty!")
     private String comment;
 
     // constructors

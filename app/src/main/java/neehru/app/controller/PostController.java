@@ -1,8 +1,10 @@
 package neehru.app.controller;
 
+import neehru.app.model.Comment;
 import neehru.app.model.Post;
 import neehru.app.model.User;
 import neehru.app.repository.PostRepository;
+import neehru.app.service.CommentServiceImpl;
 import neehru.app.service.PostServiceImpl;
 import neehru.app.service.UserServiceImpl;
 import org.springframework.security.core.Authentication;
@@ -26,10 +28,12 @@ import java.util.UUID;
 public class PostController {
     private final UserServiceImpl userService;
     private final PostServiceImpl postService;
+    private final CommentServiceImpl commentService;
 
-    public PostController(UserServiceImpl userService, PostServiceImpl postService) {
+    public PostController(UserServiceImpl userService, PostServiceImpl postService, CommentServiceImpl commentService) {
         this.userService = userService;
         this.postService = postService;
+        this.commentService = commentService;
     }
 
     @GetMapping("/new")
@@ -91,6 +95,8 @@ public class PostController {
     @GetMapping("/{uuid}")
     public String viewPost(@PathVariable String uuid, Model model) {
 
+        model.addAttribute("comment", new Comment());
+
         Optional<Post> post = postService.getPostByImage(uuid);
 
         if (post.isPresent()) {
@@ -107,6 +113,37 @@ public class PostController {
 
         }
         return "redirect:/dashboard";
+    }
+
+    @PostMapping("/{uuid}")
+    public String addComment(@PathVariable String uuid, Model model, String comment){
+        Optional<Post> post = postService.getPostByImage(uuid);
+
+        if(post.isPresent()){
+
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            if (authentication != null) {
+
+                Optional<User> currentUser = userService.getUserByUsername(authentication.getName());
+                if (currentUser.isPresent()) {
+
+                    Comment newComment = new Comment();
+                    newComment.setPost(post.get());
+                    newComment.setCommenter(currentUser.get());
+                    newComment.setComment(comment);
+
+                    commentService.saveComment(newComment);
+
+//                    return "redirect:/dashboard";
+                    return "/post/" + post.get().getImage();
+                } else {
+                    model.addAttribute("errorMessage", "Post not found.");
+                }
+            }
+
+        }
+
+        return "view_post";
     }
 
 }

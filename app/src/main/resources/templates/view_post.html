@@ -19,6 +19,23 @@
         <p th:text="${post.description}">
         <hr>
         <p>There are no comments</p>
+
+        <form th:action="@{'/post/' + ${post.image}}" th:object="${comment}" method="post">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+
+            <div class="form-group">
+                <label for="comment"></label>
+                <input type="text" id="comment" th:field="${comment}" placeholder="Add a comment">
+                <div th:if="${#fields.hasErrors('comment')}" th:errors="${comment}" class="text-danger"></div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">-></button>
+        </form>
+
+<!--        might get rid of??-->
+        <div th:if="${errorMessage}" class="alert alert-danger mt-3" role="alert">
+            <p th:text="${errorMessage}"></p>
+        </div>
     </div>
 </div>
 <div th:replace="~{fragments/footer :: footer}"></div>

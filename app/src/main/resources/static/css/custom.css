@@ -258,7 +258,7 @@ input[type="file"] {
     height: 100%;
     margin-left: auto;
     right: 0;
-    background-color: red;
+    /*background-color: red;*/
 }
 
 footer{

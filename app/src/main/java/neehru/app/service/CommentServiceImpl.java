@@ -26,12 +26,13 @@ public class CommentServiceImpl implements CommentService{
         return commentRepository.findById(id);
     }
 
-//    TODO: add????
-    public Comment saveComment(String comment) {
-        return null;
+    @Override
+    public Comment saveComment(Comment comment) {
+        return commentRepository.save(comment);
     }
 
-//    TODO: add?????
+
+    //    TODO: add?????
     public void deleteComment(Long id) {
 
     }
