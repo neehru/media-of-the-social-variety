@@ -17,10 +17,20 @@
         <p><a th:href="@{'/me/' + ${user.username}}" th:text="'@' + ${user.username}"></a></p>
         <p th:text="${post.datePosted}">
         <p th:text="${post.description}">
-        <hr>
-        <p>There are no comments</p>
+        <hr class="mt-0 mb-0">
+        <div class="scrollable-comments mt-0">
+            <p th:if="${commentsList.isEmpty()}">There are no comments</p>
+            <div th:unless="${commentsList.isEmpty()}">
+                <div th:each="comment, i: ${commentsList}">
+                    <p>
+                        <a th:href="@{'/me/' + ${comment.commenter.username}}" th:text="'@' + ${comment.commenter.username} "></a>
+                        <span th:text="${comment.comment}"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
 
-        <form th:action="@{'/post/' + ${post.image}}" th:object="${comment}" method="post">
+        <form th:action="@{'/post/' + ${post.image}}" th:object="${comment}" method="post" class="mt-0">
             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 
 

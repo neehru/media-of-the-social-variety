@@ -219,6 +219,9 @@ input[type="file"] {
      display: contents;
  }
 
+hr{
+    height:10px;
+}
 
 
 .post-comments{
@@ -226,7 +229,12 @@ input[type="file"] {
     height: 100%;
     margin-left: auto;
     right: 0;
-    /*background-color: red;*/
+}
+
+.scrollable-comments{
+    overflow-y: auto;
+    background-color: red;
+    height: 50vh;
 }
 
 footer{

@@ -20,6 +20,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -102,11 +103,13 @@ public class PostController {
         if (post.isPresent()) {
 
             Optional<User> user = userService.getUserById(post.get().getUser().getId());
+            List<Comment> commentsList = commentService.getAllPostComments(post.get());
 
             if (user.isPresent()) {
                 model.addAttribute("imagePath", uuid);
                 model.addAttribute("post", post.get());
                 model.addAttribute("user", user.get());
+                model.addAttribute("commentsList", commentsList);
 
                 return "view_post";
             }
