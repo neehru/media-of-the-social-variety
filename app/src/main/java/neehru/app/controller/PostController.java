@@ -116,7 +116,7 @@ public class PostController {
     }
 
     @PostMapping("/{uuid}")
-    public String addComment(@PathVariable String uuid, Model model, String comment){
+    public String addComment(@PathVariable String uuid, Model model, @RequestParam("comment") String comment){
         Optional<Post> post = postService.getPostByImage(uuid);
 
         if(post.isPresent()){
@@ -135,7 +135,7 @@ public class PostController {
                     commentService.saveComment(newComment);
 
 //                    return "redirect:/dashboard";
-                    return "/post/" + post.get().getImage();
+                    return "redirect:/post/" + post.get().getImage();
                 } else {
                     model.addAttribute("errorMessage", "Post not found.");
                 }
